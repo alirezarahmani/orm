@@ -16,7 +16,7 @@ class PasswordBrokerManager extends \Illuminate\Auth\Passwords\PasswordBrokerMan
     protected function createTokenRepository(array $config)
     {
         return new DoctrineTokenRepository(
-            $this->app->make(ManagerRegistry::class)->getManagerForClass(PasswordReminder::class),
+          $this->app->make('Doctrine\ORM\EntityManager') ,
             $this->app['config']['app.key'],
             $config['expire']
         );
